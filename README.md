@@ -9,16 +9,16 @@ You will need Python, Pandas and Numpy for the reading and cleaning of the data.
 
 ## Useage 
 
-You can see my [notebook](??) or follow these directions in order to:
+You can see my [notebook](https://github.com/madmep/Upper-Air-Weather-Data-/blob/main/create_and_clean_igra_csvs.ipynb) or follow these directions in order to:
 * Find the datasets you need from the station and data lists
 * Download the data as txt files
 * Create csvs for each year in those files.
 * Clean the csvs for easier analysis  
 
 ### Which Station's data do you need?
-Find the station you need from this [list](https://www1.ncdc.noaa.gov/pub/data/igra/igra2-station-list.txt).  I have provided the station list as a [csv](???) in this repository so you can load it as a dataframe and apply parameters to find exactly the stations you are interested in.    
+Find the station you need from this [list](https://www1.ncdc.noaa.gov/pub/data/igra/igra2-station-list.txt).  Column information is [here](https://www1.ncdc.noaa.gov/pub/data/igra/igra2-list-format.txt).  
 
-Column information is [here](https://www1.ncdc.noaa.gov/pub/data/igra/igra2-list-format.txt).  
+I have provided the station list as a [csv](https://github.com/madmep/Upper-Air-Weather-Data-/blob/main/igra2_station_list.csv) in this repository so you can load it as a dataframe and apply parameters to find exactly the stations you are interested in.      
 
 You must note the station ID to find the data you want in the next step.  
 
