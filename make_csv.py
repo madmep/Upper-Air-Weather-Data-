@@ -10,7 +10,7 @@ def make_csv(filename):
     with open(filename) as f:
         # read in first line of data
         header = f.readline()   
-        # if there's still data in the file keep reading it in
+        # keep reading data in until the end of the text file
         while header:   
             # create a new file for each year of the data
             year = header[13:17]
@@ -46,7 +46,7 @@ def make_csv(filename):
             '''
             while year == header[13:17]:
                 # each header row has data that's repeated for every sounding observation
-                # save it once here and then just keep adding it for each row in the inner loop below
+                # save it once here and then add it for each row in the inner loop below
                 n = int(header[32:36])   # number of observations under each header's information
                 y = header[13:17]
                 m = header[18:20]
@@ -58,7 +58,7 @@ def make_csv(filename):
                 la = header[56:63]
                 lo = header[63:71]
 
-                # for each row of sounding data under the header information (there are n rows)
+                # loop through each row of sounding data under the header information 
                 for i in range(n):
                     # read in a row of data
                     row = f.readline()
@@ -90,7 +90,7 @@ def make_csv(filename):
                 # read in the next header row to check if it's the same year at the top of the while loop
                 header = f.readline()
 
-            # once a year is complete we make a dictionary 
+            # make a dictionary when a year is complete
             data = {'year': yr, 'month': month, 'day': day, 'hour':hour, 'rel_time':reltime, 'p_src': p_src,\
                     'np_src':np_src, 'lat': lat, 'long': long, 'lvl_1': lvl_1, 'lvl_2': lvl_2, \
                     'e_time':e_time, 'pressure': pressure, 'pflag': pflag,'gph':gph,\
@@ -100,7 +100,7 @@ def make_csv(filename):
             df = pd.DataFrame(data)
             # save the dataframe as a csv and use the station ID and year for its name
             df.to_csv(title, index=False)
-            # will loop again to see if there's another header row of data
+            # loop again to see if there's another header row of data
     
-    # When there is no more data to be read in from the text file       
+    # All data read in and converted to CSVs     
     return "Complete"
