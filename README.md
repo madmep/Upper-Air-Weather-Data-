@@ -1,6 +1,8 @@
 #  Making the NOAA IGRA Data Analysis Friendly
 
 Find the upper air weather information you need and convert it into a clean and useful csv file.  If you need upper air weather information, you will most likely find the data you need in the NOAA [Integrated Global Radiosonde Archive](https://www.ncdc.noaa.gov/data-access/weather-balloon/integrated-global-radiosonde-archive) data.  This data is formatted in a way that you may find difficult to work with.  This project will help you find what you need and turn it into easy to use csv files.  
+
+I have also provided a notebook to walk through averaging wind direction data and plotting it on a wind rose.
   
 ## Setup
 
@@ -29,16 +31,16 @@ You must note the station ID to find the data you want in the next step.
 * Get the text file out of the zip file and put it in the folder you're working out of. 
 
 ### Convert the text file into csvs for each year contained in the dataset and clean up the files you want to use for analysis.
-* In main_loop.py 
+* In example_run.py 
     * you need to put your station's ID code in for the `station` variable value.
     * Insert the name of the text file you downloaded as the value for `text_file`
     * Then change the first year of data that you want cleaned for `start` value.
-    * the last year of data you want to work with is the `stop` variable value.
+    * the last year + 1 of data you want to work with is the `stop` variable value.
     * `name` is what you want your final files to be called.  I use airport identifers.
         * set `name` = `station` if you want to use the station ID
-* Once you run `main_loop` with your variable values you will have a csv for each year contained in the original text file you downloaded.  You will also have a csv for each year in your desired range that is ready for analysis.
+* Once you run `example_run` with your variable values you will have a csv for each year contained in the original text file you downloaded.  You will also have a csv for each year in your desired range that is ready for analysis.
 
-### Changes made to 'clean' csv:
+### Changes made to clean csv:
 * -9999 and -8888 are used in a number of columns to identify missing data, we turned these into NaN.
 * For flag columns blank, ' ', means the data has not been checked by tier 1 or 2 checks, but if the data is not missing it has passed all other checks.  We changed this into category 'C'.
 * We've also created new categorical columns for cardinal wind direction and pressure altitude in feet.  
@@ -78,3 +80,8 @@ In that description you can find what the abbreviations mean and the units used.
 |    |wind speed in knots if you did uncomment conversion code
 | cardinal|Wind direction in cardinal direction 
 | p_alt_ft|Pressure altitude in feet
+
+
+## Wind Rose Visualization  
+
+This wind direction [notebook](https://github.com/madmep/Upper-Air-Weather-Data-/blob/main/Wind%20Direction.ipynb) has some basic visualizations for wind data.  It uses Oakland data from 2019 that you can create in example_run.py with the test data set provided in this repository.  In the notebook there is a function for finding the mean of a group of wind directions and a wind rose plot for average speed and direction.
