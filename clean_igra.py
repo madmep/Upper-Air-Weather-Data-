@@ -37,12 +37,12 @@ def clean_igra(start, stop, station, name):
     Adds a column for pressure altitude in feet.
     Allows the option to convert speed to knots and height from meters to feet.
     
-    clean_igra(1944, 2020, 'USM00072493', 'OAK')
+    clean_igra(1944, 2021, 'USM00072493', 'OAK')
         creates a cleaned csv labeled 'OAK_year.csv' for each year of data between 1944 and 2020.
     > 'Complete'
     '''
     # create a file for each year in the input range
-    for year in range(start, stop+1):
+    for year in range(start, stop):
         df = pd.read_csv(station + '_' + str(year) + '.csv')
         
         # get rid of 'blank' as a flag value for the three flag columns
